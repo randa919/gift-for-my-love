@@ -9,9 +9,13 @@
         background: linear-gradient(to right, #ff9a9e, #fad0c4);
         text-align: center;
         font-family: "Poppins", sans-serif;
-        overflow: hidden;
-        color: white;
+        color: rgb(255, 255, 255);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        overflow-y: auto; /* Allows scrolling */
       }
+
       h1 {
         font-size: 3rem;
         margin-top: 50px;
@@ -88,6 +92,13 @@
           transform: scale(1);
         }
       }
+      .heart-image {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        opacity: 0.8;
+        animation: float 4s linear infinite;
+      }
     </style>
   </head>
   <body>
@@ -95,32 +106,7 @@
     <div class="container">
       <button class="btn" onclick="showMessage()">Click For a Message!</button>
       <p class="message">
-        From the moment we met, I knew there was something special about you.
-        Over time, that feeling has only grown stronger. You are more than just
-        my best friend—you are my sister, my safe space, my constant source of
-        joy and laughter. Life wouldn't be the same without you, and I am
-        endlessly grateful to have you by my side. There are so many things I
-        admire about you. Your kindness, your strength, and the way you always
-        manage to brighten even the darkest days. You have this incredible
-        ability to make people feel loved, valued, and understood, and I am so
-        lucky to be one of those people. No matter what life throws our way, I
-        know we’ll always have each other. Some of my favorite memories are the
-        ones we’ve created together. The late-night talks where we shared our
-        deepest secrets, the times we laughed so hard we couldn’t breathe, the
-        countless inside jokes that only we understand. Every adventure with
-        you, big or small, is a reminder of how lucky I am to have you in my
-        life. I want you to know that I will always be here for you, just as you
-        have always been here for me. Through every high and low, every triumph
-        and challenge, I will stand beside you, cheering you on, supporting you,
-        and reminding you just how amazing you are. No matter how much time
-        passes, our bond will never fade because friendships like ours are rare
-        and precious. On this special day, I just want to remind you how loved
-        and appreciated you are. You deserve all the happiness in the world, and
-        I hope this little gift brings a smile to your face. If I could give you
-        the world, I would, but instead, I give you my unwavering love,
-        gratitude, and friendship. Happy Valentine’s Day, my beautiful best
-        friend. Thank you for being you. I love you more than words can ever
-        express. 💕
+        <!-- Your message content here -->
       </p>
     </div>
 
@@ -171,6 +157,22 @@
         }, 2000);
       }
       setInterval(createClickEmoji, 1000);
+
+      // Create heart-shaped image
+      function createHeartImage() {
+        const heartImg = document.createElement("img");
+        heartImg.classList.add("heart-image");
+        heartImg.src = "me and my love.jpg";
+        document.body.appendChild(heartImg);
+
+        heartImg.style.left = Math.random() * (window.innerWidth - 50) + "px";
+        heartImg.style.top = window.innerHeight + "px";
+
+        setTimeout(() => {
+          heartImg.remove();
+        }, 4000);
+      }
+      setInterval(createHeartImage, 500);
     </script>
   </body>
 </html>
