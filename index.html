@@ -165,11 +165,13 @@
     </style>
   </head>
   <body>
-    <h1>Happy Valentine's Day, Bestie! 💖</h1>
+    <h1>Happy Valentine's Day, My Love💖</h1>
     <div class="container">
       <button class="btn" onclick="showMessage()">Click For a Message!</button>
       <p class="message">
-        <!-- Your message content here -->
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo porro
+        eligendi dolorum aliquam a labore, veniam ipsam excepturi debitis vel
+        impedit quasi tempore sint vero ratione. Harum nobis fugiat vero.
       </p>
     </div>
 
@@ -221,20 +223,13 @@
       }
       setInterval(createClickEmoji, 1000);
 
-      // Create heart-shaped image
-      function createHeartImage() {
-        const heartImg = document.createElement("img");
-        heartImg.classList.add("heart-image");
-        heartImg.src = "me and my love.jpg"; // Your image path here
-        document.body.appendChild(heartImg);
+      heartImg.style.left = Math.random() * (window.innerWidth - 50) + "px";
+      heartImg.style.top = window.innerHeight + "px";
 
-        heartImg.style.left = Math.random() * (window.innerWidth - 50) + "px";
-        heartImg.style.top = window.innerHeight + "px";
+      setTimeout(() => {
+        heartImg.remove();
+      }, 4000);
 
-        setTimeout(() => {
-          heartImg.remove();
-        }, 4000);
-      }
       setInterval(createHeartImage, 500);
     </script>
   </body>
