@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine's Day!</title>
+    <style>
+      body {
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+        color: white;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-top: 50px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .message {
+        display: none;
+        font-size: 1.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+      .btn {
+        background: #ff4d6d;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 25px;
+        transition: transform 0.3s;
+      }
+      .btn:hover {
+        transform: scale(1.1);
+      }
+      .emoji {
+        position: absolute;
+        font-size: 25px;
+        opacity: 0.7;
+        animation: float 4s linear infinite;
+      }
+      @keyframes float {
+        from {
+          transform: translateY(100vh);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-10vh);
+          opacity: 0;
+        }
+      }
+      .game-container {
+        margin-top: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+      #score {
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .click-emoji {
+        position: absolute;
+        font-size: 40px;
+        cursor: pointer;
+        animation: pulse 1s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Happy Valentine's Day, Bestie! 💖</h1>
+    <div class="container">
+      <button class="btn" onclick="showMessage()">Click for a Surprise!</button>
+      <p class="message">
+        You're the best friend anyone could ask for! Love you! 💕
+      </p>
+    </div>
+
+    <div class="game-container">
+      <h2>Catch the Emojis Game! 🎯</h2>
+      <p>Click the emojis to earn points!</p>
+      <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <script>
+      function showMessage() {
+        document.querySelector(".message").style.display = "block";
+      }
+
+      function createEmoji() {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.innerText = "💘"; // Change emoji as desired
+        document.body.appendChild(emoji);
+
+        emoji.style.left = Math.random() * window.innerWidth + "px";
+        emoji.style.top = window.innerHeight + "px";
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 4000);
+      }
+      setInterval(createEmoji, 300);
+
+      let score = 0;
+      function createClickEmoji() {
+        const emoji = document.createElement("div");
+        emoji.classList.add("click-emoji");
+        emoji.innerText = "💖"; // Change emoji as desired
+        document.body.appendChild(emoji);
+
+        emoji.style.left = Math.random() * (window.innerWidth - 50) + "px";
+        emoji.style.top = Math.random() * (window.innerHeight - 50) + "px";
+
+        emoji.addEventListener("click", () => {
+          score++;
+          document.getElementById("score").innerText = score;
+          emoji.remove();
+        });
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 2000);
+      }
+      setInterval(createClickEmoji, 1000);
+    </script>
+  </body>
+</html>
